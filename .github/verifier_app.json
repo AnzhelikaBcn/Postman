@@ -1,0 +1,966 @@
+{
+	"info": {
+		"_postman_id": "4fe614f2-2f18-4a30-8e30-66364000068a",
+		"name": "verifier_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "28422607-4fe614f2-2f18-4a30-8e30-66364000068a"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "create_task_admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7eccce1c-c400-4a7d-a62b-3fa8b40d3f36",
+								"exec": [
+									"// Проверка статуса ответа",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"try {",
+									"    // Попытка парсинга JSON и вывод в консоль",
+									"    const response = pm.response.json();",
+									"    console.log(\"Response Body:\", response);",
+									"",
+									"    // Ваш дополнительный код для проверок",
+									"    pm.test(\"Your Additional Test\", () => {",
+									"        // Ваш код проверки тела ответа",
+									"    });",
+									"} catch (error) {",
+									"    console.error(\"Error parsing JSON:\", error);",
+									"    pm.test(\"JSON Parsing Error\", () => {",
+									"        pm.expect.fail(\"Failed to parse JSON\");",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "ea8a533a-c776-4457-94d7-47067eb33f9f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenA291123}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"text\": \"API\",\n    \"answer\": \"postman\",\n    \"title\": \"intagration testing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "isSolved",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_task_admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7e011ed-c54a-4b43-8749-26dfc6c29b67",
+								"exec": [
+									"// Проверка статуса ответа",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"try {",
+									"    // Попытка парсинга JSON и вывод в консоль",
+									"    const response = pm.response.json();",
+									"    console.log(\"Response Body:\", response);",
+									"",
+									"    // Ваш дополнительный код для проверок",
+									"    pm.test(\"Your Additional Test\", () => {",
+									"        // Ваш код проверки тела ответа",
+									"    });",
+									"} catch (error) {",
+									"    console.error(\"Error parsing JSON:\", error);",
+									"    pm.test(\"JSON Parsing Error\", () => {",
+									"        pm.expect.fail(\"Failed to parse JSON\");",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "e2379a48-c0f5-4dd9-a106-130b60951133",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenA291123}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"text\": \"API\",\n    \"answer\": \"postman\",\n    \"title\": \"intagration testing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks?page=0&size=100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "id",
+									"value": "35163",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_id_task_admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "89ce297a-f31f-4cd4-a25f-8c3180109a4b",
+								"exec": [
+									"// Проверка статуса ответа",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"try {",
+									"    // Попытка парсинга JSON и вывод в консоль",
+									"    const response = pm.response.json();",
+									"    console.log(\"Response Body:\", response);",
+									"",
+									"    // Ваш дополнительный код для проверок",
+									"    pm.test(\"Your Additional Test\", () => {",
+									"        // Ваш код проверки тела ответа",
+									"    });",
+									"} catch (error) {",
+									"    console.error(\"Error parsing JSON:\", error);",
+									"    pm.test(\"JSON Parsing Error\", () => {",
+									"        pm.expect.fail(\"Failed to parse JSON\");",
+									"    });",
+									"}",
+									"        "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "868c9087-d099-4d54-a9d5-32dc7fd5e64e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenA291123}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/35175",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"35175"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "isSolved",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_task_admin_random",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "acd9c3d8-b1aa-4b4b-9423-afd0cc72af84",
+								"exec": [
+									"// Проверка статуса ответа",
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"try {",
+									"    // Попытка парсинга JSON и вывод в консоль",
+									"    const response = pm.response.json();",
+									"    console.log(\"Response Body:\", response);",
+									"",
+									"    // Ваш дополнительный код для проверок",
+									"    pm.test(\"Your Additional Test\", () => {",
+									"        // Ваш код проверки тела ответа",
+									"    });",
+									"} catch (error) {",
+									"    console.error(\"Error parsing JSON:\", error);",
+									"    pm.test(\"JSON Parsing Error\", () => {",
+									"        pm.expect.fail(\"Failed to parse JSON\");",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "689a1e1c-e2ec-48a1-9b8c-cdc39cd7a6d3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenA291123}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"text\": \"{{$randomAbbreviation}}\",\n    \"answer\": \"{{$randomAbbreviation}}\",\n    \"title\": \"{{$randomAbbreviation}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "isSolved",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_task_admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82c0cdd2-c718-4aa3-a965-a0b38f9d984d",
+								"exec": [
+									"// Проверка статуса ответа",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"try {",
+									"    // Попытка парсинга JSON и вывод в консоль",
+									"    const response = pm.response.json();",
+									"    console.log(\"Response Body:\", response);",
+									"",
+									"    // Ваш дополнительный код для проверок",
+									"    pm.test(\"Your Additional Test\", () => {",
+									"        // Ваш код проверки тела ответа",
+									"    });",
+									"} catch (error) {",
+									"    console.error(\"Error parsing JSON:\", error);",
+									"    pm.test(\"JSON Parsing Error\", () => {",
+									"        pm.expect.fail(\"Failed to parse JSON\");",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "7d1a70f9-8205-49de-94bd-aa34e254daba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMTM0NDgwNywiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MDEyNTg0MDd9.H4oszqmkLW5wAjdIjqYQ8W6rn2SioGDPMxnJ6CmBL_3ujHeyQBBD0a8_P85YjJgSbyil7RC57ApHzYyQwjH3zQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 35175,\n    \"text\": \"API\",\n    \"answer\": \"postman\",\n    \"title\": \"NEW!!!! intagration testing 123425\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/35175",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"35175"
+							],
+							"query": [
+								{
+									"key": "isSolved",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_task_admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e978162d-4ba8-489d-a622-71d2f40d59bd",
+								"exec": [
+									"// Проверка статуса ответа",
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "cb4063e7-f987-42fb-a192-ee0bae282753",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMTM0NDgwNywiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MDEyNTg0MDd9.H4oszqmkLW5wAjdIjqYQ8W6rn2SioGDPMxnJ6CmBL_3ujHeyQBBD0a8_P85YjJgSbyil7RC57ApHzYyQwjH3zQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/tasks/35170",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"35170"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "b4819205-0ad1-4429-825c-e15d58fb9aef"
+		},
+		{
+			"name": "changes",
+			"item": [
+				{
+					"name": "user_teacher_change-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6b82bc5f-624e-4482-b841-41857dfe377e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "fa8bf7c5-b7c9-482b-988b-eeedd4a1b642",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenA}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{currentPassword: \"usert\", newPassword: \"user\"}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "bfdd91e2-1fed-4701-b648-b29401bc8faa"
+		},
+		{
+			"name": "registration",
+			"item": [
+				{
+					"name": "register_correct",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6ed5e2d-e1c7-4722-9915-a9138cef6c79",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "a01b8e39-ff06-4193-87d2-8dc6ce8eb2c2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login\": \"PeterP\",\n  \"email\": \"petr.pikulin@gmail.com\",\n  \"password\": \"Petr987\",\n  \"langKey\": \"en\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register_incorrect",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0998e87b-3d9f-49e4-b8ca-db09fbb0d995",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d364ecca-00e2-41ba-b3b7-de5025e03b4b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"login\": \"Anzhelika_Kiev\",\n  \"email\": \"regressive.hypnosis@gmail.com\",\n  \"password\": \"test12345\",\n  \"langKey\": \"ru\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "8765e885-9e60-40be-aff1-0574b8f5cbe1"
+		},
+		{
+			"name": "sign_in_account",
+			"item": [
+				{
+					"name": "sign_in_admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d131f443-03e0-4f7d-82e2-c7a797ce929f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "d10d0553-53d9-4596-b44d-f9051373e0cd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenA}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1, \n    \"login\": \"admin\", \n    \"firstName\": \"Administrator\", \n    \"lastName\": \"Administrator\", \n    \"email\": \"admin@localhost.com\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_in_admin_incorr_password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5b059129-b79f-402b-95c2-54108dc0a64e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "daa8d3f5-6b43-4b9b-8851-5fcebb2e1ecc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1, \n    \"login\": \"admi\", \n    \"firstName\": \"Administrator\", \n    \"lastName\": \"Administrator\", \n    \"email\": \"admin@localhost.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_in_user_student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6dbb0978-8b03-4de4-a5e8-32b74481ffc6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "2f3e0ecd-de29-420c-867d-7f68ad90c10d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2, \n    \"login\": \"user_student\", \n    \"firstName\": \"User\", \n    \"lastName\": \"User\", \n    \"email\": \"user_student@localhost\",\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_in_user_teacher",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6291ee65-fee0-420d-8623-b15b909c9763",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "062b4863-2cdf-46ee-8343-81e0ee44b64f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 3,\n  \"login\": \"user_teacher\",\n  \"firstName\": \"User\",\n  \"lastName\": \"User\",\n  \"email\": \"user_teacher@localhost\",\n  \"imageUrl\": \"\",\n  \"activated\": true,\n  \"langKey\": \"en\",\n  \"createdBy\": \"system\",\n  \"createdDate\": null,\n  \"lastModifiedBy\": \"admin\",\n  \"lastModifiedDate\": \"2023-11-19T21:35:02.163432Z\",\n  \"authorities\": [\n    \"ROLE_USER_TEACHER\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "c6013b3e-bb36-487f-a041-01ba2d140f9a"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "75ca3daf-a8f2-4ceb-a81f-d20fd90a39a8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a3e86da6-2528-49fd-ad90-3227a9f42fc4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "511bee1a-c8a9-4e9d-9d2a-812a09ac8ad1",
+			"key": "url",
+			"value": "https://sqlverifier-50d286d70656.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"id": "bb8aa8c0-14db-4c46-bab8-4ab50e887680",
+			"key": "tokenT",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyX3RlYWNoZXIiLCJleHAiOjE3MDEzMDg5MjksImF1dGgiOiJST0xFX1VTRVJfVEVBQ0hFUiIsImlhdCI6MTcwMTIyMjUyOX0.B4IaXqSa2UnPzuzcHJWtqjUW6oARR3akiBIp2tMvI1hdcl6EoaidV3Ro8KiMYHY6le8US1ucJBAeMD_hOWjgBA",
+			"type": "string"
+		},
+		{
+			"id": "bef33408-abb1-4259-9610-b232820b816f",
+			"key": "tokenA",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMTMxMDcxNiwiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MDEyMjQzMTZ9.G_3XUmpZAmnV8f7KmJgQZw5w_UrXeih3_vMIlP6_KMsaWYNYINPmPvB6KjF-oDA2RmesnCh9kJ7hs_yUjCKG0g",
+			"type": "string"
+		},
+		{
+			"id": "17cdc879-6312-4eaf-b63f-7367812bece1",
+			"key": "tokenS",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMTE3Njk3NywiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MDEwOTA1Nzd9.2xKPAbXotEH6Fg2r70UMQW2lk_VXZ4xND5NgWLA9KAjQc6s5Gcd69OKRImCYXCqyLeZL5GI0NQm_3i5q6COZFA",
+			"type": "string"
+		},
+		{
+			"id": "ec662c23-2eee-4362-b57e-5c3ea92a3f87",
+			"key": "tokenA291123",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcwMTM0MjAwMywiYXV0aCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3MDEyNTU2MDN9.ODmg8G95evenO00GGjJbxMtWZJuzQ6b2dEcbxWEUtG6MLgJCz4ZjWx-ObwYh8xKSWxluDvAUa0bs1x0u85Ffgw",
+			"type": "string"
+		}
+	]
+}
